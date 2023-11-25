@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.unifalmg.blog.unit.UserServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-11-25T17:22:42" hostname="gustavo" time="1.411">
+  <properties/>
+  <testcase name="#findById &gt; When the id is not null &gt; When a user is found &gt; Return the user" classname="br.com.unifalmg.blog.unit.UserServiceTest" time="1.398"/>
+  <testcase name="#findById &gt; When the id is null &gt; Throw an exception" classname="br.com.unifalmg.blog.unit.UserServiceTest" time="0.005"/>
+  <testcase name="#findById &gt; When the id is not null &gt; When no user is found &gt; Throw an exception" classname="br.com.unifalmg.blog.unit.UserServiceTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
