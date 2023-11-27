@@ -12,6 +12,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
+import java.util.Arrays;
+import java.util.List;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -57,5 +60,13 @@ public class UserServiceTest {
     }
 
     // TODO: Implement test cases for getAllUsers
+    @Test
+    @DisplayName("#getAllUsers > When no users are present > Return an empty list")
+    void getAllUsersWhenNoUsersArePresentReturnEmptyList() {
+         when(repository.findAll()).thenReturn(Arrays.asList());
+         List<User> result = service.getAllUsers();
+         assertEquals(0, result.size()); 
+     }
 
 }
+
