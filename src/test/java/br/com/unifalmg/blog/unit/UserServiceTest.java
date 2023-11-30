@@ -59,7 +59,6 @@ public class UserServiceTest {
                 service.findById(2));
     }
 
-    // TODO: Implement test cases for getAllUsers
     @Test
     @DisplayName("#getAllUsers > When no users are present > Return an empty list")
     void getAllUsersWhenNoUsersArePresentReturnEmptyList() {
