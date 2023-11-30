@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -38,11 +39,34 @@ public class BlogController {
 
     @PostMapping("/user")
     public String newUser(@ModelAttribute("user") User user) {
-        // TODO: Add the new user
-        // service.add || service.save
         log.info("Entrou no cadastro de usuário");
-        service.add(user);
-        return "newuser";
+        User addedUser = service.add(user);
+        return "redirect:/user/" + addedUser.getId();
+    }
+
+    @GetMapping("/user/{id}")
+    public String showUser(@PathVariable("id") Integer id,
+            Model model) {
+        User user = service.findById(id);
+        model.addAttribute("user", user);
+        return "showuser";
+    }
+
+    @GetMapping("/user/edit/{id}")
+    public String editUser(@PathVariable("id") Integer id, Model model) {
+        User user = service.findById(id);
+        model.addAttribute("user", user);
+        return "edituser";
+    }
+
+    @PostMapping("/user/edit/{id}")
+    public String updateUser(@PathVariable("id") Integer id, @ModelAttribute("user") User updatedUser) {
+        if (!id.equals(updatedUser.getId())) {
+            return "error"; 
+        }
+
+        service.updateUser(updatedUser);
+        return "redirect:/user/" + id;
     }
 
 }
